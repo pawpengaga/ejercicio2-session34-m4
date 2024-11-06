@@ -7,6 +7,7 @@ import models.Producto;
 import services.MaquinaService;
 import services.OperarioService;
 import services.ProductoService;
+import utilitary.FabricaUtil;
 
 public class FabricaApp {
 
@@ -21,6 +22,10 @@ public class FabricaApp {
     operarioService.crear(new Operario(9999, "Ana Banana"));
     maquinaService.crear(new Maquina(545645, "Toshiba 2TB"));
     productoService.crear(new Producto(10000, "CD de musica", maquinaService.leer(545645), operarioService.leer(9999)));
+
+    System.out.println();
+    FabricaUtil.listarServicios(operarioService.leerPorNombre("Ana Banana"));
+    System.out.println();
 
     productoService.exportarDatos("ejercicio2/hola.csv");
     

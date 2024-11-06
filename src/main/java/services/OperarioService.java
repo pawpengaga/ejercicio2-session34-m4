@@ -1,7 +1,9 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import interfaces.IOperario;
@@ -55,6 +57,23 @@ public class OperarioService implements IOperario {
   @Override
   public Collection<Operario> listarObjeto() {
     return operarios.values();
+  }
+
+  @Override
+  public Collection<Operario> leerPorNombre(String nombre) {
+
+    Collection<Operario> resultadosBusqueda = new ArrayList<>();
+
+    for (Map.Entry<Long, Operario> operario : operarios.entrySet()) {
+      if (operario.getValue().getNombreOperario() == nombre) {
+        resultadosBusqueda.add(operario.getValue());
+      }
+    }
+
+    System.out.println("Entregados todos los resultados que coinciden.");
+
+    return resultadosBusqueda;
+
   }
 
   
