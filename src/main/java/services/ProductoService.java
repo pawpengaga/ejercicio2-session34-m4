@@ -6,6 +6,8 @@ import java.util.Map;
 
 import interfaces.IExportable;
 import interfaces.IProducto;
+import models.Maquina;
+import models.Operario;
 import models.Producto;
 
 public class ProductoService implements IProducto, IExportable<Producto> {
@@ -16,14 +18,21 @@ public class ProductoService implements IProducto, IExportable<Producto> {
   
   @Override
   public void exportarDatos(Producto claseServicio, String rutaDestino) {
+    
+  }
+  
+
+  // Me cuestiono que tan necesarios son estos metodos...
+  @Override
+  public Operario getOperarioProducto(Producto prod) {
+    Operario operarioActual = prod.getOSupervisor();
+    return operarioActual;
   }
   
   @Override
-  public void getOperarioProducto() {
-  }
-  
-  @Override
-  public void getMaquinaProducto() {
+  public Maquina getMaquinaProducto(Producto prod) {
+    Maquina maquinaActual = prod.getMFabricante();
+    return maquinaActual;
   }
 
   /***************** CRUD GENERAL *****************/
