@@ -8,8 +8,8 @@ import java.util.Map;
 import exceptions.GenerarArchivoException;
 import interfaces.IExportable;
 import interfaces.IProducto;
-import models.Maquina;
-import models.Operario;
+// import models.Maquina;
+// import models.Operario;
 import models.Producto;
 
 public class ProductoService implements IProducto, IExportable {
@@ -22,11 +22,12 @@ public class ProductoService implements IProducto, IExportable {
   public void exportarDatos(String rutaDestino) throws GenerarArchivoException {
     try (FileWriter writer = new FileWriter(rutaDestino)) {
 
-      writer.append("Producto, Maquina a cargo, Empleado a cargo\n");
+      writer.append("Producto, Fecha de elaboracion, Maquina a cargo, Empleado a cargo\n");
       for (Map.Entry<Long, Producto> producto : productos.entrySet()) {
 
         Producto prodi = producto.getValue();
         writer.append(prodi.getNombreProducto() + ", ")
+        .append(prodi.getFechFabricacion() + ", ")
         .append(prodi.getMFabricante().getModeloMaquina() + ", ")
         .append(prodi.getOSupervisor().getNombreOperario() + "\n");
       }
