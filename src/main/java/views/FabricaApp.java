@@ -12,6 +12,8 @@ public class FabricaApp {
 
   public static void main(String[] args) throws GenerarArchivoException {
 
+    System.out.println("---------------------------------------------------------------\n");
+
     OperarioService operarioService = new OperarioService();
     MaquinaService maquinaService = new MaquinaService();
     ProductoService productoService = new ProductoService();
