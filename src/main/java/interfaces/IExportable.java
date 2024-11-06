@@ -1,7 +1,9 @@
 package interfaces;
 
-public interface IExportable<T> {
+import exceptions.GenerarArchivoException;
 
-  public void exportarDatos(T claseServicio, String rutaDestino);
+public interface IExportable {
+
+  public void exportarDatos(String rutaDestino) throws GenerarArchivoException;
 
 }

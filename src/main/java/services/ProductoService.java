@@ -1,28 +1,47 @@
 package services;
 
+import java.io.FileWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import exceptions.GenerarArchivoException;
 import interfaces.IExportable;
 import interfaces.IProducto;
 import models.Maquina;
 import models.Operario;
 import models.Producto;
 
-public class ProductoService implements IProducto, IExportable<Producto> {
+public class ProductoService implements IProducto, IExportable {
 
   private Map<Long, Producto> productos = new HashMap<>();
 
   /***************** METODOS PROPIOS *****************/
   
   @Override
-  public void exportarDatos(Producto claseServicio, String rutaDestino) {
-    
+  public void exportarDatos(String rutaDestino) throws GenerarArchivoException {
+    try (FileWriter writer = new FileWriter(rutaDestino)) {
+
+      writer.append("Producto, Maquina a cargo, Empleado a cargo\n");
+      for (Map.Entry<Long, Producto> producto : productos.entrySet()) {
+
+        Producto prodi = producto.getValue();
+        writer.append(prodi.getNombreProducto() + ", ")
+        .append(prodi.getMFabricante().getModeloMaquina() + ", ")
+        .append(prodi.getOSupervisor().getNombreOperario() + "\n");
+      }
+
+      System.out.println("****************");
+      System.out.println("ARCHIVO GENERADO");
+      System.out.println("****************");
+      
+    } catch (Exception e) {
+      throw new GenerarArchivoException("Error al generar archivo: " + e.getMessage());
+    }
   }
   
 
-  // Me cuestiono que tan necesarios son estos metodos...
+  // METODOS PARA NADA NECESARIOS BORRAR DESPUES
   @Override
   public Operario getOperarioProducto(Producto prod) {
     Operario operarioActual = prod.getOSupervisor();
