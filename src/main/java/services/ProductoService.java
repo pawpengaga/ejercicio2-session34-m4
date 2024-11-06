@@ -42,17 +42,17 @@ public class ProductoService implements IProducto, IExportable {
   
 
   // METODOS PARA NADA NECESARIOS BORRAR DESPUES
-  @Override
-  public Operario getOperarioProducto(Producto prod) {
-    Operario operarioActual = prod.getOSupervisor();
-    return operarioActual;
-  }
+  // @Override
+  // public Operario getOperarioProducto(Producto prod) {
+  //   Operario operarioActual = prod.getOSupervisor();
+  //   return operarioActual;
+  // }
   
-  @Override
-  public Maquina getMaquinaProducto(Producto prod) {
-    Maquina maquinaActual = prod.getMFabricante();
-    return maquinaActual;
-  }
+  // @Override
+  // public Maquina getMaquinaProducto(Producto prod) {
+  //   Maquina maquinaActual = prod.getMFabricante();
+  //   return maquinaActual;
+  // }
 
   /***************** CRUD GENERAL *****************/
   
