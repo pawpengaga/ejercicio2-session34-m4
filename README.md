@@ -8,6 +8,10 @@
 
 ![Modelo-datos](e2-modelo.png)
 
+### Elementos del codigo SIN DECLARAR AQUI
+
+- interfaces.IExportable
+
 > Aun todo sujeto a cambios
 
 ### HOY SI SE PUEDE!! アイ-カツ! アイ-カツ! ✨✨✨
